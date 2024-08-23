@@ -1,5 +1,5 @@
-
-local OrionLib = require(game:GetService("ReplicatedStorage"):WaitForChild("OrionLib")) -- Adjust path if necessary
+-- Dynamically load OrionLib from a remote URL
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
 
 -- Create a new window with the name "MM2 Script Hub"
 local Window = OrionLib:MakeWindow({
@@ -27,12 +27,12 @@ local Tab3 = Window:MakeTab({
     PremiumOnly = false
 })
 
--- Create toggle and buttons in Tab 1
-local tradeScamToggleState = false -- Initial toggle state for Trade Scam button
-local forceAcceptToggleState = false -- Initial toggle state for Force Accept button
+-- Initialize toggle states
+local tradeScamToggleState = false
+local forceAcceptToggleState = false
 
--- Add Toggle for Trade Scam Button
-local tradeScamToggle = Tab1:AddToggle({
+-- Add Toggle and Button to Tab 1
+Tab1:AddToggle({
     Name = "Enable Trade Scam Button", -- Name of the toggle
     Default = false, -- Default state of the toggle
     Callback = function(state)
@@ -40,8 +40,7 @@ local tradeScamToggle = Tab1:AddToggle({
     end
 })
 
--- Add Trade Scam Button
-local tradeScamButton = Tab1:AddButton({
+Tab1:AddButton({
     Name = "Trade Scam", -- Name of the button
     Callback = function()
         if tradeScamToggleState then
@@ -52,8 +51,7 @@ local tradeScamButton = Tab1:AddButton({
     end
 })
 
--- Add Toggle for Force Accept Button
-local forceAcceptToggle = Tab1:AddToggle({
+Tab1:AddToggle({
     Name = "Enable Force Accept Button", -- Name of the toggle
     Default = false, -- Default state of the toggle
     Callback = function(state)
@@ -61,8 +59,7 @@ local forceAcceptToggle = Tab1:AddToggle({
     end
 })
 
--- Add Force Accept Button
-local forceAcceptButton = Tab1:AddButton({
+Tab1:AddButton({
     Name = "Force Accept", -- Name of the button
     Callback = function()
         if forceAcceptToggleState then
@@ -102,8 +99,6 @@ Tab3:AddButton({
         print("Anti-Lag Button Clicked!")
     end
 })
-
--- Optionally, add other UI elements like toggles, sliders, etc.
 
 -- Show the window
 Window:Show()
