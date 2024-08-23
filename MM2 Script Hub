@@ -1,6 +1,4 @@
--- Place this script in StarterGui
 
--- Ensure Orion Library is accessible
 local OrionLib = require(game:GetService("ReplicatedStorage"):WaitForChild("OrionLib")) -- Adjust path if necessary
 
 -- Create a new window with the name "MM2 Script Hub"
