@@ -1,0 +1,111 @@
+-- Place this script in StarterGui
+
+-- Ensure Orion Library is accessible
+local OrionLib = require(game:GetService("ReplicatedStorage"):WaitForChild("OrionLib")) -- Adjust path if necessary
+
+-- Create a new window with the name "MM2 Script Hub"
+local Window = OrionLib:MakeWindow({
+    Name = "MM2 Script Hub", -- Set the window name here
+    HidePremium = true,
+    IntroEnabled = false
+})
+
+-- Create Tabs
+local Tab1 = Window:MakeTab({
+    Name = "Trade Scam", -- Set the name of the first tab here
+    Icon = "rbxassetid://123456789", -- Replace with your icon ID
+    PremiumOnly = false
+})
+
+local Tab2 = Window:MakeTab({
+    Name = "Dupe", -- Set the name of the second tab here
+    Icon = "rbxassetid://123456789", -- Replace with your icon ID
+    PremiumOnly = false
+})
+
+local Tab3 = Window:MakeTab({
+    Name = "Control Panel", -- Set the name of the third tab here
+    Icon = "rbxassetid://123456789", -- Replace with your icon ID
+    PremiumOnly = false
+})
+
+-- Create toggle and buttons in Tab 1
+local tradeScamToggleState = false -- Initial toggle state for Trade Scam button
+local forceAcceptToggleState = false -- Initial toggle state for Force Accept button
+
+-- Add Toggle for Trade Scam Button
+local tradeScamToggle = Tab1:AddToggle({
+    Name = "Enable Trade Scam Button", -- Name of the toggle
+    Default = false, -- Default state of the toggle
+    Callback = function(state)
+        tradeScamToggleState = state
+    end
+})
+
+-- Add Trade Scam Button
+local tradeScamButton = Tab1:AddButton({
+    Name = "Trade Scam", -- Name of the button
+    Callback = function()
+        if tradeScamToggleState then
+            print("Trade Scam Button Clicked!")
+        else
+            print("Trade Scam Button is disabled.")
+        end
+    end
+})
+
+-- Add Toggle for Force Accept Button
+local forceAcceptToggle = Tab1:AddToggle({
+    Name = "Enable Force Accept Button", -- Name of the toggle
+    Default = false, -- Default state of the toggle
+    Callback = function(state)
+        forceAcceptToggleState = state
+    end
+})
+
+-- Add Force Accept Button
+local forceAcceptButton = Tab1:AddButton({
+    Name = "Force Accept", -- Name of the button
+    Callback = function()
+        if forceAcceptToggleState then
+            print("Force Accept Button Clicked!")
+        else
+            print("Force Accept Button is disabled.")
+        end
+    end
+})
+
+-- Add Buttons to Tab 2
+Tab2:AddButton({
+    Name = "Dupe Stuffs", -- Name of the first button in Tab 2
+    Callback = function()
+        print("Dupe Stuffs Button Clicked!")
+    end
+})
+
+Tab2:AddButton({
+    Name = "Dupe Godlys", -- Name of the second button in Tab 2
+    Callback = function()
+        print("Dupe Godlys Button Clicked!")
+    end
+})
+
+-- Add Buttons to Tab 3
+Tab3:AddButton({
+    Name = "Anti-Cheat Detection", -- Name of the first button in Tab 3
+    Callback = function()
+        print("Anti-Cheat Detection Button Clicked!")
+    end
+})
+
+Tab3:AddButton({
+    Name = "Anti-Lag", -- Name of the second button in Tab 3
+    Callback = function()
+        print("Anti-Lag Button Clicked!")
+    end
+})
+
+-- Optionally, add other UI elements like toggles, sliders, etc.
+
+-- Show the window
+Window:Show()
